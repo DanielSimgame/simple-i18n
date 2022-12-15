@@ -13,6 +13,9 @@ link simpleI18n to your HTML file
 Instantiate a simple i18n object after the DOM is loaded (``window.onload``),
 and pass the path to the language file as a parameter.
 
+parameter ``isMetaTranslated`` is optional, default is ``false``, 
+which controls whether the meta tags and title are translated or not.
+
 Initialize it by calling the ``init`` method.
 ```js
 const simI18n = new SimI18n({
