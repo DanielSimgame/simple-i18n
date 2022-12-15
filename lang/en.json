@@ -1,0 +1,21 @@
+{
+  "language": "en_US",
+  "localizedLanguage": "English (US)",
+  "titles": {
+    "index": "simpleI18n homepage",
+    "demo": "simpleI18n demo"
+  },
+  "description": "This is an simpleI18n example",
+  "keyword": "",
+  "translations": {
+    "hello": "Hello, World!",
+    "obj": {
+      "innerObj": {
+        "innerKey": "This is a nesting object"
+      }
+    },
+    "current": "Current language:",
+    "sChinese": "Chinese (Simplified)",
+    "English": "English (United States)"
+  }
+}

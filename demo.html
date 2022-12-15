@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Simple i18n -->
+    <script src="./simpleI18n.js"></script>
+</head>
+<body>
+<h1 data-i18n="hello"></h1>
+<h2 data-i18n="obj.innerObj.innerKey"></h2>
+
+<div class="language">
+    <p>
+        <span data-i18n="current">Current Language:</span>
+        <span  data-i18n="getLang"></span>
+    </p>
+    <button data-i18n="English" onclick="changeLang('en_US')">English</button>
+    <button data-i18n="sChinese" onclick="changeLang('zh_Hans')">Chinese</button>
+</div>
+
+<script>
+    let changeLang
+    window.onload = () => {
+        const simI18n = new SimI18n({
+            fallbackLang: 'en_US',
+            translations: {
+                en_US: './lang/en.json',
+                zh_Hans: './lang/zhHans.json'
+            }
+        })
+
+        simI18n.init()
+        changeLang = (lang) => simI18n.setLang(lang)
+    }
+</script>
+</body>
+</html>

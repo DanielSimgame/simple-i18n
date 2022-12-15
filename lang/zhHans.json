@@ -1,0 +1,21 @@
+{
+  "language": "zh_Hans",
+  "localizedLanguage": "中文（简体）",
+  "titles": {
+    "index": "simpleI18n sI18n首页",
+    "demo": "simpleI18n 演示"
+  },
+  "description": "这是一个sI18n的演示页面",
+  "keyword": "Internationalization, i18n, sI18n, simpleI18n",
+  "translations": {
+    "hello": "你好，世界！",
+    "obj": {
+      "innerObj": {
+        "innerKey": "这是一个嵌套的对象"
+      }
+    },
+    "current": "当前语言：",
+    "sChinese": "中文（简体）",
+    "English": "英文（美国）"
+  }
+}
