@@ -32,7 +32,7 @@ function deepSearch(obj, key) {
  * */
 function getLang () {
     const currentLang = localStorage.getItem('lang')
-    if (!currentLang) {
+    if (!currentLang || currentLang === 'undefined') {
         localStorage.setItem('lang', this.fallbackLang)
         return this.fallbackLang
     }
@@ -145,10 +145,6 @@ const SimI18n = function (options = {
     simI18n.fallbackLang = options.fallbackLang || 'en_US'
     simI18n.translations = options.translations || {}
 
-    if (!simI18n.translations.hasOwnProperty(simI18n.lang)) {
-        throw new Error('The language is not supported.')
-    }
-
     /**
      * @description language switch, languages: zh_Hans, en_US
      * @param {string} lang language code
@@ -159,10 +155,16 @@ const SimI18n = function (options = {
         window.location.reload()
     }
 
-    simI18n.getLang = getLang()
+    if (!simI18n.translations.hasOwnProperty(simI18n.lang)) {
+        const errorLang = simI18n.lang
+        simI18n?.setLang(simI18n?.fallbackLang)
+        throw new Error(`The language ${errorLang} is not supported.`)
+    }
+
+    simI18n.getLang = () => getLang()
 
     simI18n.getLocalizedLang = function () {
-        return this.languageJson?.localizedLanguage || this.getLang()
+        return this.languageJson?.['localizedLanguage'] || this.getLang()
     }
 
     /*
@@ -170,8 +172,7 @@ const SimI18n = function (options = {
     * */
     simI18n.setPageMeta = function () {
         const currentPage = window.location.pathname.split('/').pop().split('.').shift()
-        const title = simI18n.t(`titles.${currentPage}`, true)
-        document.title = title
+        document.title = simI18n.t(`titles.${currentPage}`, true)
         document.querySelector('meta[name="description"]')
             .setAttribute('content', simI18n.t(`descriptions.${currentPage}`))
         document.querySelector('meta[name="keywords"]')
