@@ -78,6 +78,11 @@ function translate(simI18n, key, isMeta = false) {
         value = deepSearch(value, keys[i])
     }
 
+    // if the value is an empty string, return it as it was
+    if (value === '') {
+        return ''
+    }
+
     // Validation: if value doesn't exist then return key string
     return !value ? key : value
 }
