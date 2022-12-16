@@ -111,7 +111,10 @@ function init(simI18n) {
                 element.innerHTML = simI18n.t(element.dataset.i18n)
             })
 
-            // data-i18n-attr example: placeholder:form.placeholder ,means set placeholder in translation form.placeholder
+            /* data-i18n-attr example: placeholder:form.placeholder,
+            * means set placeholder in translation form.placeholder,
+            * use ':' to split attribute and key
+            */
             const elementsAttr = document.querySelectorAll('[data-i18n-attr]')
             elementsAttr.forEach((element) => {
                 const [attr, key] = element.dataset.i18nAttr.split(':')
